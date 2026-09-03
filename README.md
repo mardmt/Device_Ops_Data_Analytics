@@ -79,5 +79,7 @@ e. Comprehensive documentation
 3. Review `schema-design.md` 
 4. Run  `queries/` 
 
+### 🔒 Security & Data Governance
+* **Role-Based Access Control (RBAC):** Includes `security_policies.sql` to demonstrate the principle of least privilege, creating distinct database access tiers for system administrators (`cath_lab_admin`) and research data analysts (`clinical_analyst`) in alignment with healthcare data compliance standards.
 
 
