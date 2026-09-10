@@ -1,46 +1,12 @@
 -- ============================================================================
--- SAMPLE DATA - REFERENCES AND DATA SOURCE
+-- SAMPLE DATA
 -- ============================================================================
---
--- DATA TYPE: Synthetic/Example data for educational purposes
--- NOT real patient or hospital data
---
--- DEVICE MANUFACTURERS (Real companies):
--- - Philips Healthcare: https://www.philips.com/healthcare
---   Products: Allura Xper FD20 (angiography systems)
--- - Abbott Medical Devices: https://www.abbott.com
---   Products: Vigilance Monitor (patient monitoring)
--- - Medtronic: https://www.medtronic.com
---   Products: EP Recording Systems
---
--- PROCEDURE TYPES (Real cardiology procedures):
--- - Coronary Angiography: Diagnostic imaging of coronary arteries
---   Reference: American College of Cardiology
--- - Electrophysiology (EP) Study: Electrical mapping of heart
---   Reference: Heart Rhythm Society
--- - Percutaneous Coronary Intervention (PCI): Stent placement
---   Reference: American College of Cardiology
--- - Intracardiac Echo: Ultrasound from inside the heart
---
--- COMPLICATION TYPES (Real clinical events):
--- - Arrhythmia: Abnormal heart rhythm
--- - Equipment Error: Device malfunction
--- - Patient Reaction: Adverse patient response
--- Reference: Medical Device Reporting (FDA database)
---
--- DATA CONTEXT:
--- - Setting: Cardiac catheterization laboratory
--- - Time period: January-February 2025 (example only)
--- - Physicians: Fictional names for example only
--- - Patient IDs: De-identified (P-001, P-002, etc.)
---
--- EDUCATIONAL USE ONLY
--- This dataset demonstrates healthcare data structure, NOT real clinical data
+-- Synthetic dataset for testing schema relationships and analytical queries.
+-- Features realistic equipment models (Philips, Abbott, Medtronic) and standard
+-- interventional cardiology procedure types (Angiography, EP Studies, PCI).
 -- ============================================================================
 
-
--- Add 5 devices to the devices table
-
+-- 1. Insert Devices
 INSERT INTO devices (device_name, manufacturer, serial_number, purchase_date, status, location)
 VALUES ('Philips Allura Xper FD20', 'Philips', 'PH-2024-001', '2024-01-15', 'Active', 'Cardiac Lab A');
 
@@ -55,8 +21,9 @@ VALUES ('Philips Intracardiac Echo System', 'Philips', 'PH-2024-004', '2024-01-2
 
 INSERT INTO devices (device_name, manufacturer, serial_number, purchase_date, status, location)
 VALUES ('Abbott Pressure Recording System', 'Abbott', 'AB-2024-005', '2024-02-15', 'Active', 'Cardiac Lab A');
--- Add 6 maintenance records
 
+
+-- 2. Insert Maintenance Logs
 INSERT INTO maintenance_logs (device_id, maintenance_date, maintenance_type, technician, notes)
 VALUES (1, '2025-01-10', 'Preventative', 'John Smith', 'Annual inspection passed, all systems operational');
 
@@ -74,8 +41,9 @@ VALUES (4, '2025-02-15', 'Repair', 'Sarah Johnson', 'Replaced transducer, device
 
 INSERT INTO maintenance_logs (device_id, maintenance_date, maintenance_type, technician, notes)
 VALUES (5, '2025-02-08', 'Calibration', 'John Smith', 'All pressure channels calibrated to reference standards');
--- Add 6 procedures
 
+
+-- 3. Insert Procedures
 INSERT INTO procedures (procedure_date, procedure_type, patient_id, attending_physician, duration_minutes, outcome)
 VALUES ('2025-01-20', 'Coronary Angiography', 'P-001', 'Dr. Martinez', 45, 'None');
 
@@ -94,8 +62,8 @@ VALUES ('2025-01-24', 'Electrophysiology Study with Ablation', 'P-005', 'Dr. Kum
 INSERT INTO procedures (procedure_date, procedure_type, patient_id, attending_physician, duration_minutes, outcome)
 VALUES ('2025-02-01', 'Intracardiac Echo Guided Procedure', 'P-006', 'Dr. Chen', 90, 'None');
 
--- Add 15 procedure_device records (which devices were used in which procedures)
 
+-- 4. Insert Procedure-Device Relationships (Bridge Table)
 INSERT INTO procedure_devices (procedure_id, device_id, start_time, end_time, notes)
 VALUES (1, 1, '14:30:00', '15:15:00', 'Primary imaging device for coronary visualization');
 
@@ -150,8 +118,8 @@ VALUES (6, 1, '09:00:00', '10:30:00', 'Fluoroscopic imaging support');
 INSERT INTO procedure_devices (procedure_id, device_id, start_time, end_time, notes)
 VALUES (6, 2, '09:00:00', '10:30:00', 'Patient hemodynamic monitoring');
 
--- Add 4 complications (what went wrong)
 
+-- 5. Insert Complications
 INSERT INTO complications (procedure_id, device_id, complication_type, severity, description, reported_date)
 VALUES (3, 2, 'Arrhythmia', 'Minor', 'Premature ventricular contractions detected during stent deployment', '2025-01-22');
 
