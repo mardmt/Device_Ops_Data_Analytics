@@ -6,7 +6,7 @@ SQL database and analytics for medical device inventory, maintenance tracking, a
 
 This project demonstrates:
 - **Data modeling**: Normalized schema with 5 related tables (devices, maintenance_logs, procedures, procedure_devices, complications)
-- **SQL proficiency**: Complex queries using JOINs, aggregations, GROUP BY, and subqueries
+- **SQL proficiency**: Queries using JOINs, aggregations, GROUP BY, and subqueries
 - **Healthcare domain knowledge**: Real-world device operations in interventional cardiology
 - **Analytics**: Performance metrics, reliability analysis, resource utilization
 
