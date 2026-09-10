@@ -1,0 +1,21 @@
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+#System files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+.idea/
+*.swp
+
+# DBeaver
+.dbeaver/
+
+*.log
+.env
